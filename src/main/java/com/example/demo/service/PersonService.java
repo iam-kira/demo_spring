@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,10 @@ public PersonService(@Qualifier("fakedao")
 
     public List<Person> getAllPeople() {
         return personDao.selectAllpeople();
+    }
+
+    public Optional<Person> getPersonById(UUID id) {
+        return personDao.selectPersonById(id);
     }
 
 }
