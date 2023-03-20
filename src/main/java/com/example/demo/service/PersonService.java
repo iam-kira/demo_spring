@@ -35,4 +35,11 @@ public PersonService(@Qualifier("fakedao")
         return personDao.selectPersonById(id);
     }
 
+    public int deletePerson(UUID id) {
+        return personDao.deletePersonById(id);
+    }
+
+    public int updatePerson(UUID id, Person newPerson) {
+        return personDao.updatePersonById(id, newPerson);
+    }
 }
