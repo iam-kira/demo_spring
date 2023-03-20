@@ -28,17 +28,24 @@ public class FakePersonDataAccessService implements PersonDao {
     @Override
     public Optional<Person> selectPersonById(UUID id) {
         return DB.stream()
-                .filter(person-- > person.getId().equals(id))
+                .filter(person -> person.getId().equals(id))
         .findFirst();
     }
     @Override
-    public int deletePerson(Person person) {
+    public int deletePersonById(UUID id) {
+        Optional<Person> personMayBe = selectPersonById(id);
+        if (personMayBe.isEmpty()) {
+            return 0;
+        }
+        DB.remove(personMayBe.get());
+
         return 0;
     }
     @Override
-    public int updatePerson(UUID id, Person person) {
+    public int updatePersonById(UUID id, Person person) {
         return 0;
     }
+
     
     
 }
