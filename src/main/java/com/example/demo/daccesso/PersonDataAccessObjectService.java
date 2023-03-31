@@ -4,8 +4,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.example.demo.model.Person;
+import org.springframework.stereotype.Repository;
 
+import com.example.demo.model.Person;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
+
+@Repository("MSSQL")
 public class PersonDataAccessObjectService implements PersonDao {
 
     @Override
@@ -15,7 +20,7 @@ public class PersonDataAccessObjectService implements PersonDao {
 
     @Override
     public List<Person> selectAllpeople() {
-        return null;
+        return List.of(new Person(UUID, randomUUID(), "FROM MSSQL DB"));
         
     }
 
